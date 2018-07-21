@@ -1,1 +1,23 @@
-[]
+- id: '1531741884421'
+  alias: 'Kitchen: SomaFM Sonic Universe 24/7'
+  trigger:
+  - event: sunrise
+    platform: sun
+  condition: []
+  action:
+  - data:
+      entity_id: media_player.kitchen_speaker
+      media_content_id: http://ice1.somafm.com/sonicuniverse-192-mp3
+      media_content_type: music
+    service: media_player.play_media
+- id: '1531751135236'
+  alias: 'Alex: Welcome Home'
+  trigger:
+  - entity_id: device_tracker.alex_pixel
+    platform: state
+    to: home
+  condition: []
+  action:
+  - data:
+      message: Alex at home!
+    service: persistent_notification.create

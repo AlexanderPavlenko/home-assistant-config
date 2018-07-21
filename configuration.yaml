@@ -13,6 +13,22 @@ homeassistant:
   # Customization file
   customize: !include customize.yaml
 
+zone:
+
+device_tracker:
+- platform: asuswrt
+  host: 192.168.2.1
+  username: !secret router_ssh_username
+  port: !secret router_ssh_port
+  ssh_key: /config/router_ssh_key
+- platform: owntracks_http
+
+notify:
+- name: pushover
+  platform: pushover
+  api_key: !secret pushover_api_key
+  user_key: !secret pushover_user_key
+
 # Show links to resources in log and frontend
 # introduction:
 
@@ -24,9 +40,11 @@ config:
 
 http:
   # Secrets are defined in the file secrets.yaml
-  # api_password: !secret http_password
+  api_password: !secret http_password
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   base_url: 192.168.2.5:8123
+  ip_ban_enabled: True
+  login_attempts_threshold: 4
 
 # Checks for available updates
 # Note: This component will send some information about your system to
@@ -58,6 +76,14 @@ sun:
 # Weather prediction
 sensor:
 - platform: yr
+- platform: deluge
+  host: localhost
+  username: !secret deluge_username
+  password: !secret deluge_password
+  monitored_variables:
+  - 'current_status'
+  - 'download_speed'
+  - 'upload_speed'
 
 # Text to speech
 tts:

@@ -18,3 +18,8 @@ media_player.living_room_speaker:
   name:
   platform: cast
   unique_id: 0d55ca7b-6d02-5387-fb05-f06ab2b5d5c8
+media_player.living_room_tv:
+  config_entry_id: 08b8b7c355f44f28afe48a90f46ebf3b
+  name:
+  platform: cast
+  unique_id: 32b91f49-9844-33da-0562-822774d13185
