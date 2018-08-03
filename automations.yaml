@@ -21,3 +21,14 @@
   - data:
       message: Alex at home!
     service: persistent_notification.create
+- id: '1533022224930'
+  alias: Sunset Notification
+  trigger:
+  - event: sunset
+    offset: -01:00:00
+    platform: sun
+  condition: []
+  action:
+  - data:
+      message: Wanna see sunset?
+    service: notify.pushover

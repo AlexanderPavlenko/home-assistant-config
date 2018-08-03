@@ -73,9 +73,8 @@ map:
 # Track the sun
 sun:
 
-# Weather prediction
 sensor:
-- platform: yr
+- platform: yr  # Weather prediction
 - platform: deluge
   host: localhost
   username: !secret deluge_username
@@ -89,8 +88,7 @@ sensor:
 tts:
 - platform: google
 
-# Cloud
-cloud:
+#cloud:
 
 group: !include groups.yaml
 automation: !include automations.yaml
