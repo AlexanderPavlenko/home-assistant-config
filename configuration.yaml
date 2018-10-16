@@ -21,6 +21,8 @@ device_tracker:
   username: !secret router_ssh_username
   port: !secret router_ssh_port
   ssh_key: /config/router_ssh_key
+  new_device_defaults:
+    hide_if_away: True
 - platform: owntracks_http
 
 notify:
@@ -83,6 +85,14 @@ sensor:
   - 'current_status'
   - 'download_speed'
   - 'upload_speed'
+
+switch:
+- platform: command_line
+  switches:
+    openvpn_client_cs:
+      command_on: 'systemctl start openvpn-client@CS'
+      command_off: 'systemctl stop openvpn-client@CS'
+      friendly_name: 'CS openvpn client'
 
 # Text to speech
 tts:

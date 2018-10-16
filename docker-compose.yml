@@ -6,6 +6,8 @@ services:
     volumes:
     - config:/config
     - /etc/localtime:/etc/localtime:ro
+    - /run/dbus:/run/dbus
+    - /run/systemd:/run/systemd
     restart: always
     network_mode: host
 volumes:
